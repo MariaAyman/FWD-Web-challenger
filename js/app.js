@@ -35,6 +35,7 @@ const navData = sections.map(section => section.getAttribute('data-nav'));
  * 
 */
 
+//Smooth scroll function
 const scrollTo = function(e){
     e.preventDefault();
     const target = e.target.getAttribute('data-scroll-to');
@@ -74,9 +75,25 @@ const makeNav = function(nav, data, sectionsIDs){
 const activeSec = function(){
     sections.map(section => {
         window.addEventListener('scroll', (e) => {
-            isInView(section) ? section.classList.add('section--activate') : section.classList.remove('section--activate');
+            isInView(section) ? section.classList.add('your-active-class') : section.classList.remove('your-active-class');
         });
     });
+}
+
+//highlight section number in nav
+const activeNav = function(){
+    const listNav = document.querySelectorAll('.menu__link');
+    console.log('Navlist: ', listNav);
+    listNav.forEach(nav => {
+        nav.addEventListener('click', () => {
+            listNav.forEach(nav => {
+                nav.classList.remove('active');
+                nav.style.color = null; //remove  inline style
+            });
+            nav.classList.add('active');
+            nav.style.color = '#fff';
+        })
+    })
 }
 
 // Scroll to anchor ID using scrollTO event (in the makeNav function)
@@ -92,6 +109,6 @@ makeNav(navList, navData, sectionsIDs);
 
 // Scroll to section on link click
 
-// Set sections as active
+// Set active css class
 activeSec();
-
+activeNav();

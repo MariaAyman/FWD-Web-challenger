@@ -100,6 +100,10 @@ section {
     transition: ease 0.3s all;
 }
 
+.active{
+    background: #333;
+}
+
 /* Header Styles */
 .page__header {
     background: #fff;
@@ -107,6 +111,23 @@ section {
     top: 0;
     width: 100%;
     z-index: 5;
+}
+
+#navbar__list{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+}
+
+@media only screen and (max-width: 435px){
+    #navbar__list{
+        flex-wrap: wrap;
+    }
+
+    .navbar__menu{
+        height: 15vh;
+    }
 }
 
 /* Footer Styles */
